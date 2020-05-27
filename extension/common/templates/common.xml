@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!--
+  Please see the license.html file included with this distribution for
+  attribution and copyright information.
+-->
+
+<root>
+
+    <template name="basestringcontrol">
+        <stringcontrol>
+            <font>sheetlabel</font>
+            <underlineoffset>-3</underlineoffset>
+            <nodrop />
+            <nodrag />
+            <!--    <script file="common/scripts/basestringcontrol.lua" />  This is an old implementation of interface.string   -->
+        </stringcontrol>
+    </template>
+
+    <template name="sheetframe">
+        <frame_char />
+    </template>
+
+    <windowclass name="empty">
+        <sheetdata>
+        </sheetdata>
+    </windowclass>
+
+    <template name="sheetframelabel">
+        <basestringcontrol>
+            <anchored>
+                <position>insidetopleft</position>
+                <size>
+                    <width>27</width>
+                    <height>20</height>
+                </size>
+            </anchored>
+            <center />
+            <font>sheetlabelinline</font>
+        </basestringcontrol>
+    </template>
+
+    <template name="sheetframetitle">
+        <sheettitle>
+            <anchored>
+                <position>insidetop</position>
+                <offset>0,8</offset>
+            </anchored>
+            <center />
+        </sheettitle>
+    </template>
+
+    <template name="sheetlabel">
+        <basestringcontrol>
+            <font>sheetlabel</font>
+            <anchored>
+                <position>insidetopleft</position>
+                <size>
+                    <height>20</height>
+                </size>
+            </anchored>
+        </basestringcontrol>
+    </template>
+
+    <template name="sheetlist">
+        <basewindowlist>
+            <allowdelete />
+            <script file="common/templates/scripts/sheetlist.lua" />
+        </basewindowlist>
+    </template>
+
+    <template name="sheetnumberfield">
+        <basenumberfield>
+            <anchored>
+                <position>insidetopleft</position>
+                <size>
+                    <width mergerule="replace">25</width>
+                    <height mergerule="replace">17</height>
+                </size>
+            </anchored>
+            <frame mergerule="replace">
+                <name>fielddark</name>
+                <offset>4,5,4,3</offset>
+            </frame>
+            <script file="common/templates/scripts/sheetnumberfield.lua" />
+        </basenumberfield>
+    </template>
+
+    <template name="sheettitle">
+        <basestringcontrol>
+            <font>sheetlabelinline</font>
+            <staticcase>upper</staticcase>
+        </basestringcontrol>
+    </template>
+
+    <template name="basestringfield">
+        <stringfield>
+            <font>sheetlabel</font>
+            <selectioncolor>#90ffffff</selectioncolor>
+            <underlineoffset>-3</underlineoffset>
+            <nodrop />
+            <nodrag />
+            <script file="common/templates/scripts/basestringfield.lua" />
+        </stringfield>
+    </template>
+
+    <template name="baseformattedtextfield">
+        <formattedtextfield>
+            <font>
+                <normal>chatfont</normal>
+                <bold>narratorfont</bold>
+                <italic>reference-i</italic>
+                <bolditalic>reference-bi</bolditalic>
+                <title>sheetlabel</title>
+            </font>
+            <linkicon>
+                <link>button_link</link>
+                <emptylink>button_emptytarget</emptylink>
+            </linkicon>
+            <icon>
+                <chat>button_speak</chat>
+            </icon>
+            <!--<footer>footer_narrow</footer>-->
+            <selectioncolor>#FFD296</selectioncolor>
+            <empty>Click to enter text</empty>
+            <script file="common/templates/scripts/baseformattedtextfield.lua" />
+        </formattedtextfield>
+    </template>
+
+    <template name="sheetformattedtextfield">
+        <baseformattedtextfield>
+            <script file="common/templates/scripts/sheetformattedtextfield.lua" />
+        </baseformattedtextfield>
+    </template>
+
+    <template name="basenumberfield">
+        <basicnumber>
+            <font>sheetlabel</font>
+            <color>ff000000</color>
+            <zerocolor>20000000</zerocolor>
+            <minvalue>0</minvalue>
+            <noreset />
+            <nodrop />
+            <nodrag />
+            <script file="common/templates/scripts/basenumberfield.lua" />
+        </basicnumber>
+    </template>
+
+    <template name="sheetnumbercontrol">
+        <basenumbercontrol>
+            <anchored>
+                <position>insidetopleft</position>
+                <size>
+                    <width mergerule="replace">25</width>
+                    <height mergerule="replace">17</height>
+                </size>
+            </anchored>
+            <frame mergerule="replace">
+                <name>fielddark</name>
+                <offset>4,5,4,3</offset>
+            </frame>
+            <script file="common/templates/scripts/sheetnumbercontrol.lua" />
+        </basenumbercontrol>
+    </template>
+
+    <template name="basenumbercontrol">
+        <numbercontrol>
+            <font>sheetlabel</font>
+            <color>ff000000</color>
+            <zerocolor>20000000</zerocolor>
+            <noreset />
+            <nodrop />
+            <nodrag />
+            <keyeditframe>
+                <name>sheetfocus</name>
+                <offset>4,5,4,3</offset>
+            </keyeditframe>
+            <script file="common/templates/scripts/basenumbercontrol.lua" />
+        </numbercontrol>
+    </template>
+
+    <template name="sheetstringfield">
+        <string_labeled>
+            <anchored>
+                <size>
+                    <height>20</height>
+                </size>
+            </anchored>
+        </string_labeled>
+    </template>
+
+    <template name="checkbox">
+        <genericcontrol>
+            <stateicons>
+                <on>button_checkon</on>
+                <off>button_checkoff</off>
+            </stateicons>
+            <script file="common/templates/scripts/checkbox.lua" />
+        </genericcontrol>
+    </template>
+
+<template name="embark_link">
+    <linkcontrol>
+        <anchored position="righthigh" offset="10,2" width="20" height="20" />
+        <script>
+				function onInit()
+					if class and path then
+						setValue(class[1], DB.getPath(window.getDatabaseNode(), path[1]));
+					else
+						setValue();
+					end
+				end
+        </script>
+    </linkcontrol>
+</template>
+
+<template name="arrival_link">
+    <linkcontrol>
+        <anchored position="righthigh" offset="10,2" width="20" height="20" />
+        <script>
+				function onInit()
+					if class and path then
+						setValue(class[1], DB.getPath(window.getDatabaseNode(), path[1]));
+					else
+						setValue();
+					end
+				end
+        </script>
+    </linkcontrol>
+</template>
+
+</root>

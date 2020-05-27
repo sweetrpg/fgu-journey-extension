@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<root version="3.0">
+    <properties>
+        <name>Journeying</name>
+        <version>0.1</version>
+        <loadorder>99</loadorder>
+        <description>
+            <text>Journey rules extension</text>
+            <website>https://sweetrpg.com</website>
+            <author>paulyhedral</author>
+        </description>
+
+        <!-- Supported rulesets -->
+        <ruleset>
+            <name>CoreRPG</name>
+        </ruleset>
+        <ruleset>
+            <name>5E</name>
+        </ruleset>
+        <ruleset>
+            <name>PFRPG</name>
+        </ruleset>
+        <ruleset>
+            <name>PFRPG2</name>
+        </ruleset>
+        <ruleset>
+            <name>Genesys</name>
+        </ruleset>
+    </properties>
+
+    <announcement text="Journeying extension v1.0 for Fantasy Grounds" font="emotefont" icon="journeylogo" />
+
+    <base>
+        <!-- Tabletop -->
+        <includefile source="graphics/frames.xml" />
+        <includefile source="graphics/icons.xml" />
+        <includefile source="strings/journeys.xml" />
+
+        <includefile source="common/templates/common.xml" />
+
+        <!-- Windows -->
+        <includefile source="campaign/journey/record_embark.xml" />
+        <includefile source="campaign/journey/record_events.xml" />
+        <includefile source="campaign/journey/record_arrival.xml" />
+        <includefile source="campaign/journey/record_party.xml" />
+        <includefile source="campaign/journey/record_notes.xml" />
+        <includefile source="campaign/journey/record_main.xml" />
+        <includefile source="campaign/journey/record.xml" />
+
+        <!-- Sidebar -->
+        <script name="DesktopJourneys" file="desktop/scripts/data_library.lua" />
+    </base>
+</root>

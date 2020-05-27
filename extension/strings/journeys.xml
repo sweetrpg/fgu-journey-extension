@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!--
+  Please see the license.html file included with this distribution for
+  attribution and copyright information.
+-->
+
+<root>
+    <!-- <string name="ref_label_placetype">Type</string>
+    <string name="ref_label_grouptype">Type</string>
+    <string name="ref_label_briefdesc">Description</string>
+    <string name="ref_label_briefgmdesc">GM Notes</string>
+    <string name="ref_label_briefpcdesc">PC Notes</string>
+    <string name="ref_label_inplace">In Place</string>
+    <string name="ref_label_npcs">Major NPCs</string>
+    <string name="ref_label_demographics">Demographics</string>
+    <string name="ref_label_purpose">Purpose</string>
+    <string name="ref_label_languages">Languages</string>
+    <string name="ref_label_alignment">Alignment</string>
+    <string name="ref_label_economy">Economy</string>
+    <string name="ref_label_benefits">Benefits</string>
+    <string name="ref_label_government">Government</string>
+    <string name="ref_label_obligations">Obligations</string>
+    <string name="ref_label_history">History</string>
+    <string name="ref_label_religion">Religion</string>
+    <string name="ref_label_leader">Leader</string>
+    <string name="ref_label_places">Other Places</string>
+    <string name="ref_label_world">World Builder</string>
+    <string name="ref_label_groups">Groups</string>
+    <string name="ref_label_images">Images</string>
+    <string name="ref_label_deity">Deity</string>
+    <string name="ref_label_adherents">Adherents</string>
+    <string name="ref_label_goals">Goals</string>
+    <string name="ref_label_funding">Funding</string>
+    <string name="ref_label_hq">Headquarters</string>
+
+    <string name="ref_label_status">Status</string>
+    <string name="ref_label_gender">Gender</string>
+    <string name="ref_label_race">Race</string>
+    <string name="ref_label_occupation">Occupation</string>
+    <string name="ref_label_faction">Faction</string>
+    <string name="ref_label_relationships">Relationships</string> -->
+
+    <!-- Campaign -->
+    <string name="library_recordtype_label_srpg_journey">Journeys</string>
+    <string name="sidebar_tooltip_srpg_journey">Journeys</string>
+
+<string name="library_recordtype_empty_journey">&#171; New Journey &#187;</string>
+<string name="ref_type_journey">Journey</string>
+
+<string name="record_label_info_title">Journey Information</string>
+<string name="record_label_info_desc">Description</string>
+<string name="record_label_info_date">Date</string>
+
+<string name="record_label_embark_title">Embarkation</string>
+<string name="record_label_embark_result">Result</string>
+<string name="record_label_embark_desc">Description</string>
+
+<string name="record_label_events_title">Events</string>
+<string name="record_label_events_count">Count</string>
+<string name="record_label_events_dc">DC</string>
+
+<string name="record_label_arrival_title">Arrival</string>
+<string name="record_label_arrival_result">Result</string>
+<string name="record_label_arrival_desc">Description</string>
+
+<string name="record_label_travel_title">Travel</string>
+<string name="record_label_travel_speed">Speed</string>
+<string name="record_label_travel_time_taken">Time Taken</string>
+<string name="record_label_travel_hex_count">Hex Count</string>
+
+<string name="record_label_tables_title">Tables</string>
+<string name="record_label_tables_embark">Embarkation</string>
+<string name="record_label_tables_events">Events</string>
+<string name="record_label_tables_arrival">Arrival</string>
+
+<string name="record_label_notes_title">Notes</string>
+
+    <!-- <string name="ref_label_cluetype">Clue</string>
+    <string name="ref_label_theorytype">Theory</string>
+    <string name="ref_label_briefdesc">Description</string>
+    <string name="ref_label_inplace">In Place</string>
+    <string name="ref_label_links">Links</string>
+    <string name="ref_label_briefpcdisc">Discussion</string>
+    <string name="ref_label_status">Status</string>
+    <string name="ref_label_investigator">Investigator</string> -->
+
+
+    <!-- Campaign -->
+    <!-- <string name="library_recordtype_label_mc_investigator">Investigator</string>
+    <string name="sidebar_tooltip_mc_investigator">Investigator</string>
+    <string name="library_recordtype_label_mc_investigator">Investigator</string> -->
+
+</root>

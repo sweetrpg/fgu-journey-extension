@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!--
+  Please see the license.html file included with this distribution for
+  attribution and copyright information.
+-->
+
+<root>
+  <windowclass name="journey_party">
+    <sheetdata>
+<frame_record_content />
+    <!-- UI elements:
+    member list
+    -
+    roles:
+    - guide
+    - lead_scout
+    - scout1
+    - scout2
+    - lead_hunter
+    - hunter1
+    - hunter2
+    - lead_lookout
+    - lookout1
+    - lookout2
+    -->
+      <!-- <frame_ref_content />
+      <sub_ref_content name="content">
+        <class>ref_journey_party</class>
+      </sub_ref_content>
+      <scrollbar_ref_content offset="-20" /> -->
+    </sheetdata>
+  </windowclass>
+</root>

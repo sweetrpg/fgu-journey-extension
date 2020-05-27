@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!--
+  Please see the license.html file included with this distribution for
+  attribution and copyright information.
+-->
+
+<root>
+  <windowclass name="journey_notes">
+    <sheetdata>
+      <sheetframe name="notes_frame">
+        <bounds>14,350,470,200</bounds>
+      </sheetframe>
+      <!-- <sheetframetitle name="notes_frame_title">
+  <anchored>
+    <to>notes_frame</to>
+  </anchored>
+ <labelres>record_label_notes_title</labelres>
+</sheetframetitle> -->
+
+      <sheetformattedtextfield name="notes" source="notes">
+        <anchored>
+          <left>
+            <parent>notes_frame</parent>
+            <anchor>left</anchor>
+            <offset>8</offset>
+          </left>
+          <right>
+            <parent>notes_frame</parent>
+            <anchor>right</anchor>
+            <offset>-10</offset>
+          </right>
+          <top>
+            <parent>notes_frame</parent>
+            <anchor>top</anchor>
+            <offset>20</offset>
+          </top>
+          <bottom>
+            <parent>notes_frame</parent>
+            <anchor>bottom</anchor>
+            <offset>-20</offset>
+          </bottom>
+        </anchored>
+      </sheetformattedtextfield>
+      <scrollbar>
+        <anchored>
+          <to>notes</to>
+          <offset>-6,0</offset>
+        </anchored>
+        <target>notes</target>
+      </scrollbar>
+    </sheetdata>
+  </windowclass>
+</root>
