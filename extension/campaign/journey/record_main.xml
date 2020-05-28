@@ -98,7 +98,7 @@
       <!-- Events Frame -->
       <sheetframe name="events_frame">
         <!-- <bounds>115,110,100,60</bounds> -->
-        <anchored width="130" height="75">
+        <anchored width="125" height="75">
           <top parent="info_frame" anchor="bottom" />
           <left parent="embark_frame" anchor="right" />
         </anchored>
@@ -170,41 +170,19 @@
         <anchored to="arrival_result" position="below" />
         <static textres="record_label_arrival_result" />
       </label>
-      <!-- <string_labeled name="arrival_result" source="arrival.result">
-        <anchored to="arrival_frame" width="40" height="20">
-          <left offset="15" />
-          <top offset="20" />
-        </anchored>
-        <readonly />
-        <labelres>record_label_arrival_result</labelres>
-      </string_labeled> -->
       <arrival_link name="arrival_detail">
         <anchored to="arrival_result" />
         <class>arrival_detail</class>
         <path>arrival</path>
       </arrival_link>
-      <!-- <string_labeled name="arrival_desc" source="arrival.description">
-  <script file="campaign/journey/scripts/arrival.lua" />
-  <anchored>
-    <to>arrival_frame</to>
-    <left offset="60" />
-    <top offset="20" />
-    <right offset="-29" />
-    <size>
-      <height>20</height>
-    </size>
-  </anchored>
-  <readonly />
-  <labelres>record_label_arrival_desc</labelres>
-</string_labeled> -->
 
       <!-- Travel Frame-->
       <sheetframe name="travel_frame">
         <!-- <bounds>15,410,-29,100</bounds> -->
-        <anchored height="75">
+        <anchored width="200" height="75">
           <top parent="embark_frame" anchor="bottom" />
           <left offset="15" />
-          <right offset="-29" />
+          <!-- <right offset="-29" /> -->
         </anchored>
       </sheetframe>
       <sheetframetitle name="travel_frame_title">
@@ -233,7 +211,7 @@
         <static textres="record_label_travel_hex_count" />
       </label>
       <basicnumber name="travel_time_taken" source="travel.time_taken">
-        <anchored height="20" width="40">
+        <anchored height="20" width="70">
           <top parent="travel_frame" offset="25" />
           <right parent="travel_frame" offset="-15" />
         </anchored>
