@@ -57,7 +57,7 @@
         <!-- <bounds>15,110,100,60</bounds> -->
         <anchored width="110" height="75">
           <top parent="info_frame" anchor="bottom" />
-          <left offset="15" />
+          <left offset="20" />
         </anchored>
       </sheetframe>
       <sheetframetitle name="embark_frame_title">
@@ -67,7 +67,7 @@
       <basicnumber name="embarkation_result" source="embarkation.result">
         <anchored height="20" width="40">
           <top parent="embark_frame" offset="25" />
-          <left parent="embark_frame" offset="15" />
+          <left parent="embark_frame" offset="20" />
         </anchored>
         <readonly />
       </basicnumber>
@@ -162,7 +162,7 @@
       <basicnumber name="arrival_result" source="arrival.result">
         <anchored height="20" width="40">
           <top parent="arrival_frame" offset="25" />
-          <left parent="arrival_frame" offset="15" />
+          <left parent="arrival_frame" offset="20" />
         </anchored>
         <readonly />
       </basicnumber>
@@ -179,7 +179,7 @@
       <!-- Travel Frame-->
       <sheetframe name="travel_frame">
         <!-- <bounds>15,410,-29,100</bounds> -->
-        <anchored width="200" height="75">
+        <anchored width="230" height="75">
           <top parent="embark_frame" anchor="bottom" />
           <left offset="15" />
           <!-- <right offset="-29" /> -->
@@ -200,9 +200,9 @@
         <static textres="record_label_travel_speed" />
       </label>
       <basicnumber name="travel_hex_count" source="travel.hex_count">
-        <anchored height="20" width="40">
+        <anchored height="20" width="60">
           <top parent="travel_frame" offset="25" />
-          <left parent="travel_speed" position="right" offset="10" />
+          <left parent="travel_speed" position="right" offset="50" />
         </anchored>
         <readonly />
       </basicnumber>
