@@ -8,7 +8,6 @@
 <root>
   <windowclass name="journey_party">
     <sheetdata>
-<frame_record_content />
     <!-- UI elements:
     member list
     -

@@ -7,7 +7,7 @@
 
 <root>
     <windowclass name="journey_events">
-        <sheetdata><frame_record_content />
+        <sheetdata>
 </sheetdata>
     </windowclass>
 </root>
