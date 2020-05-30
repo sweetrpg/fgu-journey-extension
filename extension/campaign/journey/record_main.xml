@@ -118,17 +118,17 @@
         <anchored to="events_count" position="below" />
         <static textres="record_label_events_count" />
       </label>
-<basicnumber name="events_dc" source="events.dc">
-  <anchored height="20" width="40">
-    <top parent="events_frame" offset="25" />
-    <right parent="events_frame" offset="-15" />
-  </anchored>
-  <readonly />
-</basicnumber>
-<label>
-  <anchored to="events_dc" position="below" />
-  <static textres="record_label_events_dc" />
-</label>
+      <basicnumber name="events_dc" source="events.dc">
+        <anchored height="20" width="40">
+          <top parent="events_frame" offset="25" />
+          <right parent="events_frame" offset="-15" />
+        </anchored>
+        <readonly />
+      </basicnumber>
+      <label>
+        <anchored to="events_dc" position="below" />
+        <static textres="record_label_events_dc" />
+      </label>
       <!-- <string_labeled name="events_count" source="events.count">
         <anchored to="events_frame" width="40" height="20">
           <left offset="15" />
