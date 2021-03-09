@@ -199,10 +199,10 @@
         </genericcontrol>
     </template>
 
-<template name="embark_link">
-    <linkcontrol>
-        <anchored position="righthigh" offset="10,2" width="20" height="20" />
-        <script>
+    <template name="embark_link">
+        <linkcontrol>
+            <anchored position="righthigh" offset="10,2" width="20" height="20" />
+            <script>
 				function onInit()
 					if class and path then
 						setValue(class[1], DB.getPath(window.getDatabaseNode(), path[1]));
@@ -210,14 +210,14 @@
 						setValue();
 					end
 				end
-        </script>
-    </linkcontrol>
-</template>
+            </script>
+        </linkcontrol>
+    </template>
 
-<template name="arrival_link">
-    <linkcontrol>
-        <anchored position="righthigh" offset="10,2" width="20" height="20" />
-        <script>
+    <template name="arrival_link">
+        <linkcontrol>
+            <anchored position="righthigh" offset="10,2" width="20" height="20" />
+            <script>
 				function onInit()
 					if class and path then
 						setValue(class[1], DB.getPath(window.getDatabaseNode(), path[1]));
@@ -225,8 +225,15 @@
 						setValue();
 					end
 				end
-        </script>
-    </linkcontrol>
-</template>
+            </script>
+        </linkcontrol>
+    </template>
+
+    <template name="dieroller">
+        <buttoncontrol>
+            <rollable/>
+            <script file="campaign/journey/scripts/dieroller.lua" />
+        </buttoncontrol>
+    </template>
 
 </root>

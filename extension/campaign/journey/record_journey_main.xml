@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!--
+  Please see the license.html file included with this distribution for
+  attribution and copyright information.
+-->
+
+<root>
+  <windowclass name="journey_main">
+    <margins control="0,0,0,2" />
+    <script file="campaign/journey/scripts/main.lua" />
+    <sheetdata>
+      <genericcontrol name="rightanchor">
+        <anchored height="0" width="0">
+          <top />
+          <right />
+        </anchored>
+      </genericcontrol>
+
+      <!-- UI elements:
+             name
+             calendar date (optional)
+
+             embarkation result (die roll, text)
+             events (number, DC)
+             arrival (die roll, text)
+
+             travel (speed, hex count, time taken)
+
+             tables
+       -->
+
+      <!-- Anchors -->
+
+      <!-- Info Frame-->
+      <sheetframe name="info_frame">
+        <bounds>5,10,-5,95</bounds>
+      </sheetframe>
+      <sheetframetitle name="info_frame_title">
+        <anchored to="info_frame" />
+        <!-- <labelres>record_label_info_title</labelres> -->
+        <static textres="journey_main_info_frame_title" />
+      </sheetframetitle>
+      <string_labeled name="description">
+        <anchored to="info_frame" position="insidetopleft" height="20">
+          <left offset="15" />
+          <top offset="20" />
+          <right offset="-15" />
+        </anchored>
+        <!-- <anchored to="info_frame" position="insidetopleft" offset="15,20" height="20" /> -->
+        <labelres>journey_main_info_desc_label</labelres>
+      </string_labeled>
+      <string_labeled name="date">
+        <anchored to="info_frame" position="insidetopleft" height="20">
+          <left offset="15" />
+          <top offset="50" />
+          <right offset="-15" />
+        </anchored>
+        <!-- <anchored to="info_frame" position="insidetopleft" offset="15,50" height="20" /> -->
+        <labelres>journey_main_info_date_label</labelres>
+      </string_labeled>
+
+      <!-- Embarkation Frame -->
+      <sheetframe name="embark_frame">
+        <!-- <bounds>15,110,100,60</bounds> -->
+        <anchored width="110" height="75">
+          <top parent="info_frame" anchor="bottom" />
+          <left offset="5" />
+        </anchored>
+      </sheetframe>
+      <sheetframetitle name="embark_frame_title">
+        <anchored to="embark_frame" />
+        <static textres="journey_main_embark_frame_title" />
+      </sheetframetitle>
+      <basicnumber name="embarkation_result" source="embarkation.result">
+        <anchored height="20" width="40">
+          <top parent="embark_frame" offset="25" />
+          <left parent="embark_frame" offset="20" />
+        </anchored>
+        <readonly />
+      </basicnumber>
+      <label>
+        <anchored to="embarkation_result" position="below" />
+        <static textres="journey_main_embark_result_label" />
+      </label>
+      <embark_link name="embarkation_detail">
+        <anchored to="embarkation_result" />
+        <class>embarkation_detail</class>
+        <path>embarkation</path>
+      </embark_link>
+      <!-- <string_labeled name="embark_desc" source="embarkation.description">
+        <script file="campaign/journey/scripts/embark.lua" />
+        <anchored>
+          <to>embark_frame</to>
+          <left offset="60" />
+          <top offset="20" />
+          <right offset="-29" />
+          <size>
+            <height>20</height>
+          </size>
+        </anchored>
+<readonly />
+        <labelres>record_label_embark_desc</labelres>
+      </string_labeled> -->
+
+      <!-- Events Frame -->
+      <sheetframe name="events_frame">
+        <!-- <bounds>115,110,100,60</bounds> -->
+        <anchored width="125" height="75">
+          <top parent="info_frame" anchor="bottom" />
+          <left parent="embark_frame" anchor="right" />
+        </anchored>
+      </sheetframe>
+      <sheetframetitle name="events_frame_title">
+        <anchored to="events_frame" />
+        <static textres="journey_main_events_frame_title" />
+      </sheetframetitle>
+      <basicnumber name="events_count" source="events.count">
+        <anchored height="20" width="40">
+          <top parent="events_frame" offset="25" />
+          <left parent="events_frame" offset="15" />
+        </anchored>
+        <readonly />
+      </basicnumber>
+      <label>
+        <anchored to="events_count" position="below" />
+        <static textres="journey_main_events_count_label" />
+      </label>
+      <basicnumber name="events_dc" source="events.dc">
+        <anchored height="20" width="40">
+          <top parent="events_frame" offset="25" />
+          <right parent="events_frame" offset="-15" />
+        </anchored>
+        <readonly />
+      </basicnumber>
+      <label>
+        <anchored to="events_dc" position="below" />
+        <static textres="journey_main_events_dc_label" />
+      </label>
+      <!-- <string_labeled name="events_count" source="events.count">
+        <anchored to="events_frame" width="40" height="20">
+          <left offset="15" />
+          <top offset="20" />
+        </anchored>
+        <readonly />
+        <labelres>record_label_events_count</labelres>
+      </string_labeled>
+      <string_labeled name="events_dc" source="events.dc">
+        <script file="campaign/journey/scripts/events.lua" />
+        <anchored to="events_frame" width="40" height="20">
+          <left offset="60" />
+          <top offset="20" />
+        </anchored>
+        <readonly />
+        <labelres>record_label_events_dc</labelres>
+      </string_labeled> -->
+
+      <!-- Arrival Frame -->
+      <sheetframe name="arrival_frame">
+        <!-- <bounds>215,110,-29,60</bounds> -->
+        <anchored width="110" height="75">
+          <top parent="info_frame" anchor="bottom" />
+          <left parent="events_frame" anchor="right" />
+        </anchored>
+      </sheetframe>
+      <sheetframetitle name="arrival_frame_title">
+        <anchored to="arrival_frame" />
+        <static textres="journey_main_arrival_frame_title" />
+      </sheetframetitle>
+      <basicnumber name="arrival_result" source="arrival.result">
+        <anchored height="20" width="40">
+          <top parent="arrival_frame" offset="25" />
+          <left parent="arrival_frame" offset="20" />
+        </anchored>
+        <readonly />
+      </basicnumber>
+      <label>
+        <anchored to="arrival_result" position="below" />
+        <static textres="journey_main_arrival_result_label" />
+      </label>
+      <arrival_link name="arrival_detail">
+        <anchored to="arrival_result" />
+        <class>arrival_detail</class>
+        <path>arrival</path>
+      </arrival_link>
+
+      <!-- Travel Frame-->
+      <sheetframe name="travel_frame">
+        <!-- <bounds>15,410,-29,100</bounds> -->
+        <anchored width="250" height="75">
+          <top parent="embark_frame" anchor="bottom" />
+          <left offset="5" />
+          <!-- <right offset="-29" /> -->
+        </anchored>
+      </sheetframe>
+      <sheetframetitle name="travel_frame_title">
+        <anchored to="travel_frame" />
+        <static textres="journey_main_travel_frame_title" />
+      </sheetframetitle>
+      <basicnumber name="travel_speed" source="travel.speed">
+        <anchored height="20" width="40">
+          <top parent="travel_frame" offset="25" />
+          <left parent="travel_frame" offset="15" />
+        </anchored>
+      </basicnumber>
+      <label>
+        <anchored to="travel_speed" position="below" />
+        <static textres="journey_main_travel_speed_label" />
+      </label>
+      <basicnumber name="travel_hex_count" source="travel.hex_count">
+        <anchored height="20" width="60">
+          <top parent="travel_frame" offset="25" />
+          <left parent="travel_speed" position="right" offset="50" />
+        </anchored>
+        <readonly />
+      </basicnumber>
+      <label>
+        <anchored to="travel_hex_count" position="below" />
+        <static textres="journey_main_travel_hex_count_label" />
+      </label>
+      <basicnumber name="travel_time_taken" source="travel.time_taken">
+        <anchored height="20" width="70">
+          <top parent="travel_frame" offset="25" />
+          <right parent="travel_frame" offset="-15" />
+        </anchored>
+        <readonly />
+      </basicnumber>
+      <label>
+        <anchored to="travel_time_taken" position="below" />
+        <static textres="journey_main_travel_time_taken_label" />
+      </label>
+
+      <!-- Tables Frame-->
+      <sheetframe name="tables_frame">
+        <!-- <bounds>15,510,-29,100</bounds> -->
+        <anchored height="150">
+          <top parent="travel_frame" anchor="bottom" />
+          <left offset="5" />
+          <right offset="-5" />
+        </anchored>
+      </sheetframe>
+      <sheetframetitle name="tables_frame_title">
+        <anchored to="tables_frame" />
+        <static textres="journey_main_tables_frame_title" />
+      </sheetframetitle>
+
+    </sheetdata>
+  </windowclass>
+</root>

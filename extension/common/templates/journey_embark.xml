@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!--
+  Please see the license.html file included with this distribution for
+  attribution and copyright information.
+-->
+
+<root>
+
+    <windowclass name="journey_embark_path_item">
+        <margins control="0,0,0,2" />
+        <script>
+			function onInit()
+				getDatabaseNode().onDelete = onDelete;
+			end
+			function onDelete(node)
+                Debug.console("on delete embark path item");
+                -- Debug.console(window);
+                Debug.console(node);
+                -- local itemNode = JourneyManager.getItemNode(getDatabaseNode());
+                -- Debug.console(itemNode);
+                local listNode = node.getParent();
+                Debug.console(listNode);
+				EmbarkationManager.recalcPerilRating(listNode);
+			end
+            function update(bEditMode)
+                -- difficulty.setEnabled(bEditMode);
+                -- name.setReadOnly(not bEditMode);
+                -- effect.setReadOnly(not bEditMode);
+            end
+        </script>
+        <sheetdata>
+            <genericcontrol name="rightanchor">
+                <anchored position="insidetopright" offset="0,2" height="0" width="0" />
+            </genericcontrol>
+
+            <button_idelete name="idelete">
+                <anchored width="20" height="20">
+                    <top offset="2" />
+                    <right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
+                </anchored>
+            </button_idelete>
+
+            <!--
+                - hex identifier
+                - base peril rating
+                - adjustments
+                - notes
+              -->
+            <basicstring name="hex_id">
+                <!-- <disabled /> -->
+                <anchored width="30" height="20">
+                    <left parent="" offset="10" />
+                    <top offset="2" />
+                    <!-- <right parent="rightanchor" anchor="left" relation="relative" offset="-35" /> -->
+                </anchored>
+                <delaykeyupdate />
+                <tabtarget next="base_peril_rating" />
+                <tooltip textres="journey_embark_path_item_hexid_tooltip" />
+            </basicstring>
+            <basicnumber name="base_peril_rating">
+                <!-- <disabled /> -->
+                <anchored to="hex_id" width="30" height="20">
+                    <top />
+                    <left anchor="right" offset="10" />
+                </anchored>
+                <delaykeyupdate />
+                <tabtarget prev="hex_id" next="adjustments" />
+                <tooltip textres="journey_embark_path_item_peril_tooltip" />
+                <script>
+                  function onValueChanged()
+                    Debug.console("base peril rating changed");
+                    local listNode = getDatabaseNode().getParent().getParent();
+                    Debug.console(listNode);
+                    EmbarkationManager.recalcPerilRating(listNode);
+                  end
+                </script>
+            </basicnumber>
+            <basicnumber name="adjustments">
+                <!-- <disabled /> -->
+                <anchored to="base_peril_rating" width="30" height="20">
+                    <top />
+                    <left anchor="right" offset="10" />
+                </anchored>
+                <delaykeyupdate />
+                <tabtarget prev="base_peril_rating" next="notes" />
+                <tooltip textres="journey_embark_path_item_adj_tooltip" />
+                <script>
+                  function onValueChanged()
+                    Debug.console("adjustment value changed");
+                    local listNode = getDatabaseNode().getParent().getParent();
+                    Debug.console(listNode);
+                    EmbarkationManager.recalcPerilRating(listNode);
+                  end
+                </script>
+            </basicnumber>
+            <basicstring name="notes">
+                <!-- <disabled /> -->
+                <anchored to="rightanchor">
+                    <top />
+                    <left parent="adjustments" anchor="right" offset="10" />
+                    <right anchor="left" relation="relative" offset="-10" />
+                </anchored>
+                <tabtarget next="difficulty" prev="name" />
+                <tooltip textres="journey_embark_path_item_notes_tooltip" />
+                <multilinespacing>20</multilinespacing>
+            </basicstring>
+        </sheetdata>
+    </windowclass>
+
+</root>

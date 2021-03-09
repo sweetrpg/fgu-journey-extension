@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!--
+  Please see the license.html file included with this distribution for
+  attribution and copyright information.
+-->
+
+<root>
+  <windowclass name="journey_events">
+    <sheetdata>
+      <genericcontrol name="rightanchor">
+        <anchored height="0" width="0">
+          <top />
+          <right />
+        </anchored>
+      </genericcontrol>
+
+      <!-- UI elements:
+             (top)
+             - number of events
+             - DC/Difficulty/TN/etc. (base +/- peril rating)
+
+             (event list)
+             item:
+             - result
+             - rating
+             - notes
+             - arrival modifier
+        -->
+    </sheetdata>
+  </windowclass>
+</root>

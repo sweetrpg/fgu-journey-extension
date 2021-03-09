@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!--
+  Please see the license.html file included with this distribution for
+  attribution and copyright information.
+-->
+
+<root>
+    <windowclass name="srpg_journey">
+        <frame>recordsheet</frame>
+        <placement>
+            <size width="450" height="550" />
+        </placement>
+        <sizelimits>
+            <minimum width="500" height="400" />
+            <dynamic />
+        </sizelimits>
+        <minimize>minimized_reference</minimize>
+        <tooltip field="name" />
+        <nodelete />
+        <!-- <playercontrol /> -->
+        <script file="campaign/journey/scripts/init.lua" />
+        <sheetdata>
+            <sub_record_header name="header">
+                <class>journey_header</class>
+            </sub_record_header>
+
+            <frame_record_content_tabbed name="contentframe" />
+            <!-- <frame_ref_content />
+<sub_ref_content name="content">
+    <class>ref_talent_stats</class>
+</sub_ref_content>
+<scrollbar_ref_content /> -->
+
+            <subwindow_record name="embark">
+                <!-- <bounds>0,65,-1,-20</bounds> -->
+                <class>journey_embark</class>
+            </subwindow_record>
+            <subwindow_record name="events">
+                <!-- <bounds>0,65,-1,-20</bounds> -->
+                <class>journey_events</class>
+            </subwindow_record>
+            <subwindow_record name="arrival">
+                <!-- <bounds>0,65,-1,-20</bounds> -->
+                <class>journey_arrival</class>
+            </subwindow_record>
+            <subwindow_record name="party">
+                <!-- <bounds>0,65,-1,-20</bounds> -->
+                <class>journey_party</class>
+            </subwindow_record>
+            <!-- <subwindow name="notes">
+                <bounds>0,65,-1,-20</bounds>
+                <class>journey_notes</class>
+            </subwindow> -->
+            <ft_record name="notes">
+                <anchored to="contentframe" position="over" />
+                <empty textres="ft_empty" hidereadonly="true" />
+                <invisible />
+            </ft_record>
+            <subwindow_record name="main">
+                <!-- <bounds>0,65,-1,-20</bounds> -->
+                <class>journey_main</class>
+            </subwindow_record>
+
+            <scrollbar_record>
+                <target>notes</target>
+            </scrollbar_record>
+
+            <tabs_recordsheet name="tabs">
+                <tab>
+                    <icon>tab_main</icon>
+                    <subwindow>main</subwindow>
+                </tab>
+                <tab>
+                    <icon>tab_embark</icon>
+                    <subwindow>embark</subwindow>
+                </tab>
+                <tab>
+                    <icon>tab_events</icon>
+                    <subwindow>events</subwindow>
+                </tab>
+                <tab>
+                    <icon>tab_arrival</icon>
+                    <subwindow>arrival</subwindow>
+                </tab>
+                <tab>
+                    <icon>tab_party</icon>
+                    <subwindow>party</subwindow>
+                </tab>
+                <tab>
+                    <icon>tab_notes</icon>
+                    <subwindow>notes</subwindow>
+                </tab>
+                <activate>1</activate>
+            </tabs_recordsheet>
+
+            <resize_recordsheet />
+            <close_recordsheet />
+        </sheetdata>
+    </windowclass>
+
+    <windowclass name="journey_header">
+        <margins control="0,0,0,8" />
+        <!--script file="campaign/scripts/world_header.lua" /-->
+        <script>
+			function onInit()
+				update();
+			end
+			function update()
+				local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode());
+				name.setReadOnly(bReadOnly);
+                if DB.getModule(getDatabaseNode()) then
+                    iconLock.setVisible(true);
+                    buttonLock.setVisible(false);
+                end
+			end
+        </script>
+        <sheetdata>
+            <link_record_header>
+                <class>srpg_journey</class>
+            </link_record_header>
+
+            <anchor_record_header_right name="rightanchor" />
+            <icon_record_locked name="iconLock" />
+            <button_record_locked name="buttonLock" />
+
+            <string_record_name name="name">
+                <empty textres="library_recordtype_empty_srpg_journey" />
+            </string_record_name>
+            <!-- <label_reftype name="reftype">
+                <static textres="ref_type_journey" />
+            </label_reftype> -->
+        </sheetdata>
+    </windowclass>
+
+</root>

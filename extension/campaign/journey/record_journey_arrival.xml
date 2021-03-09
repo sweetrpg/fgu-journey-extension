@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!--
+  Please see the license.html file included with this distribution for
+  attribution and copyright information.
+-->
+
+<root>
+  <windowclass name="journey_arrival">
+    <sheetdata>
+      <genericcontrol name="rightanchor">
+        <anchored height="0" width="0">
+          <top />
+          <right />
+        </anchored>
+      </genericcontrol>
+      <!-- UI elements:
+             (summary)
+             - guide's arrival roll
+             - terrain modifier
+             - arrival modifiers (sum)
+             - result
+
+             (time)
+             - travel speed
+             - terrain modifier
+             - hexes traveled
+             - distance divisor
+             - time taken result
+
+             (table)
+             - path hexes that contributed to terrain
+             - events that contributed to arrival modification
+        -->
+      <!-- Summary frame -->
+      <sheetframe name="arrival_summary_frame">
+        <!-- <bounds>5,10,100,60</bounds> -->
+        <anchored height="75">
+          <top parent="rightanchor" anchor="bottom" />
+          <left parent="" offset="5" />
+          <right parent="rightanchor" offset="-5" />
+        </anchored>
+      </sheetframe>
+      <sheetframetitle name="arrival_summary_frame_title">
+        <anchored to="arrival_summary_frame" />
+        <static textres="journey_arrival_summary_frame_title" />
+      </sheetframetitle>
+
+      <!-- Time frame -->
+      <sheetframe name="travel_time_frame">
+        <anchored width="110" height="75">
+          <top parent="arrival_summary_frame" anchor="bottom" />
+          <left offset="5" />
+          <right parent="rightanchor" offset="-5" />
+        </anchored>
+      </sheetframe>
+      <sheetframetitle name="travel_time_frame_title">
+        <anchored to="travel_time_frame" />
+        <static textres="journey_arrival_travel_time_frame_title" />
+      </sheetframetitle>
+
+      <!-- Table frame -->
+      <sheetframe name="arrival_contrib_frame">
+        <anchored width="110" height="75">
+          <top parent="travel_time_frame" anchor="bottom" />
+          <left offset="5" />
+          <right parent="rightanchor" offset="-5" />
+          <bottom />
+        </anchored>
+      </sheetframe>
+      <sheetframetitle name="arrival_contrib_frame_title">
+        <anchored to="arrival_contrib_frame" />
+        <static textres="journey_arrival_contrib_frame_title" />
+      </sheetframetitle>
+
+    </sheetdata>
+  </windowclass>
+</root>

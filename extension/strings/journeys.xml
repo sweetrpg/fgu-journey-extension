@@ -6,77 +6,90 @@
 -->
 
 <root>
-    <!-- <string name="ref_label_placetype">Type</string>
-    <string name="ref_label_grouptype">Type</string>
-    <string name="ref_label_briefdesc">Description</string>
-    <string name="ref_label_briefgmdesc">GM Notes</string>
-    <string name="ref_label_briefpcdesc">PC Notes</string>
-    <string name="ref_label_inplace">In Place</string>
-    <string name="ref_label_npcs">Major NPCs</string>
-    <string name="ref_label_demographics">Demographics</string>
-    <string name="ref_label_purpose">Purpose</string>
-    <string name="ref_label_languages">Languages</string>
-    <string name="ref_label_alignment">Alignment</string>
-    <string name="ref_label_economy">Economy</string>
-    <string name="ref_label_benefits">Benefits</string>
-    <string name="ref_label_government">Government</string>
-    <string name="ref_label_obligations">Obligations</string>
-    <string name="ref_label_history">History</string>
-    <string name="ref_label_religion">Religion</string>
-    <string name="ref_label_leader">Leader</string>
-    <string name="ref_label_places">Other Places</string>
-    <string name="ref_label_world">World Builder</string>
-    <string name="ref_label_groups">Groups</string>
-    <string name="ref_label_images">Images</string>
-    <string name="ref_label_deity">Deity</string>
-    <string name="ref_label_adherents">Adherents</string>
-    <string name="ref_label_goals">Goals</string>
-    <string name="ref_label_funding">Funding</string>
-    <string name="ref_label_hq">Headquarters</string>
+  <!-- Global -->
+  <string name="library_recordtype_label_srpg_journey">Journeys</string>
+  <string name="sidebar_tooltip_srpg_journey">Journeys</string>
 
-    <string name="ref_label_status">Status</string>
-    <string name="ref_label_gender">Gender</string>
-    <string name="ref_label_race">Race</string>
-    <string name="ref_label_occupation">Occupation</string>
-    <string name="ref_label_faction">Faction</string>
-    <string name="ref_label_relationships">Relationships</string> -->
+  <string name="library_recordtype_empty_srpg_journey">&#171; New Journey &#187;</string>
+  <string name="ref_type_journey">Journey</string>
 
-    <!-- Campaign -->
-    <string name="library_recordtype_label_srpg_journey">Journeys</string>
-    <string name="sidebar_tooltip_srpg_journey">Journeys</string>
+  <!-- Main -->
+  <string name="journey_main_info_frame_title">Journey Information</string>
+  <string name="journey_main_info_desc_label">Description</string>
+  <string name="journey_main_info_date_label">Date</string>
 
-<string name="library_recordtype_empty_journey">&#171; New Journey &#187;</string>
-<string name="ref_type_journey">Journey</string>
+  <string name="journey_main_embark_frame_title">Embarkation</string>
+  <string name="journey_main_embark_result_label">Result</string>
+  <string name="journey_main_embark_desc_label">Description</string>
 
-<string name="record_label_info_title">Journey Information</string>
-<string name="record_label_info_desc">Description</string>
-<string name="record_label_info_date">Date</string>
+  <string name="journey_main_events_frame_title">Events</string>
+  <string name="journey_main_events_count_label">Count</string>
+  <string name="journey_main_events_dc_label">DC</string>
 
-<string name="record_label_embark_title">Embarkation</string>
-<string name="record_label_embark_result">Result</string>
-<string name="record_label_embark_desc">Description</string>
+  <string name="journey_main_arrival_frame_title">Arrival</string>
+  <string name="journey_main_arrival_result_label">Result</string>
+  <string name="journey_main_arrival_desc_label">Description</string>
 
-<string name="record_label_events_title">Events</string>
-<string name="record_label_events_count">Count</string>
-<string name="record_label_events_dc">DC</string>
+  <string name="journey_main_travel_frame_title">Travel</string>
+  <string name="journey_main_travel_speed_label">Speed</string>
+  <string name="journey_main_travel_time_taken_label">Time Taken</string>
+  <string name="journey_main_travel_hex_count_label">Hex Count</string>
 
-<string name="record_label_arrival_title">Arrival</string>
-<string name="record_label_arrival_result">Result</string>
-<string name="record_label_arrival_desc">Description</string>
+  <string name="journey_main_tables_frame_title">Tables</string>
 
-<string name="record_label_travel_title">Travel</string>
-<string name="record_label_travel_speed">Speed</string>
-<string name="record_label_travel_time_taken">Time Taken</string>
-<string name="record_label_travel_hex_count">Hex Count</string>
+  <!-- Embark -->
+  <string name="journey_embark_path_frame_title">Path</string>
+  <string name="journey_embark_roll_frame_title">Roll</string>
+  <string name="journey_embark_results_frame_title">Results</string>
+  <string name="journey_embark_initial_roll_label">Roll</string>
+  <string name="journey_embark_initial_roll_tooltip">Embarkation Roll</string>
+  <string name="journey_embark_dieroller_tooltip">Double-click to make an embarkation roll</string>
+  <string name="journey_embark_guide_skill_modifier_label">Surv.</string>
+  <string name="journey_embark_guide_skill_modifier_tooltip">Survival Proficiency Bonus</string>
+  <string name="journey_embark_guide_attr_modifier_label">Wis.</string>
+  <string name="journey_embark_guide_attr_modifier_tooltip">Wisdom Modifier</string>
+  <string name="journey_embark_peril_rating_label">Peril</string>
+  <string name="journey_embark_peril_rating_tooltip">Highest Peril Rating</string>
+  <string name="journey_embark_result_label">Result</string>
+  <string name="journey_embark_result_tooltip">Embarkation Result</string>
+  <string name="journey_embark_path_item_hexid_tooltip">Hex ID</string>
+  <string name="journey_embark_path_item_peril_tooltip">Base Peril Rating</string>
+  <string name="journey_embark_path_item_adj_tooltip">Adjustments</string>
+  <string name="journey_embark_path_item_notes_tooltip">Description</string>
 
-<string name="record_label_tables_title">Tables</string>
-<string name="record_label_tables_embark">Embarkation</string>
-<string name="record_label_tables_events">Events</string>
-<string name="record_label_tables_arrival">Arrival</string>
+  <!-- Events -->
 
-<string name="record_label_notes_title">Notes</string>
+  <!-- Arrival -->
+  <string name="journey_arrival_summary_frame_title">Arrival</string>
+  <string name="journey_arrival_travel_time_frame_title">Time Taken</string>
+  <string name="journey_arrival_contrib_frame_title">Contributions</string>
 
-    <!-- <string name="ref_label_cluetype">Clue</string>
+  <!-- Party -->
+  <string name="journey_party_list_frame_title">Members</string>
+  <string name="journey_party_roles_frame_title">Roles</string>
+  <string name="journey_party_roles_guide_label">Guide</string>
+  <string name="journey_party_roles_scout_lead_label">Lead Scout</string>
+  <string name="journey_party_roles_scout1_label">Scout</string>
+  <string name="journey_party_roles_scout2_label">Scout</string>
+  <string name="journey_party_roles_hunter_lead_label">Lead Hunter</string>
+  <string name="journey_party_roles_hunter1_label">Hunter</string>
+  <string name="journey_party_roles_hunter2_label">Hunter</string>
+  <string name="journey_party_roles_lookout_lead_label">Lead Lookout</string>
+  <string name="journey_party_roles_lookout1_label">Lookout</string>
+  <string name="journey_party_roles_lookout2_label">Lookout</string>
+
+  <!-- Notes -->
+
+  <!-- <string name="journey_main_tables_embark_label">Embarkation</string>
+<string name="journey_main_tables_events">Events</string>
+<string name="journey_main_tables_arrival">Arrival</string> -->
+
+  <!-- <string name="journey_main_notes_frame_title">Notes</string> -->
+
+  <!-- <string name="record_label_arrival_summary_title">Arrival</string> -->
+
+
+  <!-- <string name="ref_label_cluetype">Clue</string>
     <string name="ref_label_theorytype">Theory</string>
     <string name="ref_label_briefdesc">Description</string>
     <string name="ref_label_inplace">In Place</string>

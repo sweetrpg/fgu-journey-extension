@@ -6,14 +6,14 @@
     <icon name="journeylogo" file="logo.png" />
 
     <!-- Sidebar -->
-    <icon name="button_journeys_down" file="graphics/sidebar/button_journeys.png" />
-    <icon name="button_journeys" file="graphics/sidebar/button_journeys_down.png" />
+    <icon name="button_journeys_down" file="graphics/sidebar/button_journeys_down.png" />
+    <icon name="button_journeys_up" file="graphics/sidebar/button_journeys_up.png" />
 
     <!-- Tabs -->
-    <icon name="tab_arrival" file="graphics/journey/tabs/tab_arrival.png" />
-    <icon name="tab_events" file="graphics/journey/tabs/tab_events.png" />
-    <icon name="tab_embark" file="graphics/journey/tabs/tab_embark.png" />
-    <icon name="tab_party" file="graphics/journey/tabs/tab_party.png" />
-    <icon name="tab_notes" file="graphics/journey/tabs/tab_notes.png" />
+    <icon name="tab_arrival" file="graphics/journey/tabs/arrival.png" />
+    <icon name="tab_events" file="graphics/journey/tabs/events.png" />
+    <icon name="tab_embark" file="graphics/journey/tabs/embark.png" />
+    <icon name="tab_party" file="graphics/journey/tabs/party.png" />
+    <icon name="tab_notes" file="graphics/journey/tabs/notes.png" />
 
 </root>

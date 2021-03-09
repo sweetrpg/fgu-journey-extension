@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!--
+  Please see the license.html file included with this distribution for
+  attribution and copyright information.
+-->
+
+<root>
+
+    <template name="party_guide_role">
+        <party_guide_role_contents />
+    </template>
+
+    <windowclass name="party_guide_role_contents">
+        <script>
+            function onDrop(x, y, draginfo)
+                local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode());
+                if bReadOnly then return; end
+                RoleManager.handleAssignPartyRole("guide", draginfo)
+            end
+        </script>
+
+        <sheetdata>
+            <!-- <frame_char /> -->
+            <genericcontrol name="rightanchor">
+                <anchored height="0" width="0">
+                    <top />
+                    <right />
+                </anchored>
+            </genericcontrol>
+
+            <!--
+        <linkfield name="link">
+            <anchored to="rightanchor" position="right" relation="relative" offset="-30,-10" width="20" />
+            <description field="guide" />
+            <closetoggle />
+            <invisible />
+            <script>
+                function onInit()
+                    onValueChanged();
+                end
+                function onValueChanged()
+                    if isEmpty() then
+                        setVisible(false);
+                        name.setValue("");
+                        skill_bonus.setValue("");
+                        attr_bonus.setValue("");
+                    else
+                        setVisible(true);
+                        local guide = getDatabaseNode()
+                        name.setValue(guide.name);
+                        skill_bonus.setValue(GameSystemManager.getGameSystemValue(guide, "guide_skill"));
+                        attr_bonus.setValue(GameSystemManager.getGameSystemValue(guide, "guide_attr"));
+                    end
+                end
+            </script>
+        </linkfield>
+-->
+            <string_labeled name="name">
+                <!-- <bounds>15,30,-5,20</bounds> -->
+                <anchored parent="" position="insidetopleft" height="20">
+                    <left offset="15" />
+                    <top offset="30" />
+                    <right to="link" offset="-5" />
+                </anchored>
+                <readonly />
+                <labelres>journey_party_roles_guide_label</labelres>
+            </string_labeled>
+            <!--
+        <basicnumber name="skill_bonus">
+            <anchored to="name" height="20" width="40">
+                <top />
+                <bottom />
+                <left anchor="right" />
+            </anchored>
+        </basicnumber>
+        <basicnumber name="attr_bonus">
+            <anchored to="skill_bonus" height="20" width="40">
+                <top />
+                <bottom />
+                <left anchor="right" />
+                <right parent="link" anchor="left" />
+            </anchored>
+        </basicnumber>
+-->
+        </sheetdata>
+    </windowclass>
+
+    <windowclass name="party_scout_role">
+        <genericcontrol name="rightanchor">
+            <anchored height="0" width="0">
+                <top />
+                <right />
+            </anchored>
+        </genericcontrol>
+    </windowclass>
+
+    <windowclass name="party_hunter_role">
+        <genericcontrol name="rightanchor">
+            <anchored height="0" width="0">
+                <top />
+                <right />
+            </anchored>
+        </genericcontrol>
+    </windowclass>
+
+    <windowclass name="party_lookout_role">
+        <genericcontrol name="rightanchor">
+            <anchored height="0" width="0">
+                <top />
+                <right />
+            </anchored>
+        </genericcontrol>
+    </windowclass>
+
+</root>

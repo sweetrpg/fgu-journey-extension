@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!--
+  Please see the license.html file included with this distribution for
+  attribution and copyright information.
+-->
+
+<root>
+  <windowclass name="journey_party">
+    <script file="campaign/journey/scripts/party.lua" />
+    <sheetdata>
+      <genericcontrol name="rightanchor">
+        <anchored height="0" width="0">
+          <top />
+          <right />
+        </anchored>
+      </genericcontrol>
+
+      <!-- UI elements:
+           member list
+           -
+           roles:
+           - guide (link to char, extracted modifiers/attributes)
+           - lead_scout
+           - scout1
+           - scout2
+           - lead_hunter
+           - hunter1
+           - hunter2
+           - lead_lookout
+           - lookout1
+           - lookout2
+    -->
+      <!-- Member list frame -->
+      <sheetframe name="party_list_frame">
+        <!-- <bounds>15,110,100,60</bounds> -->
+        <anchored to="rightanchor" height="200">
+          <top parent="" />
+          <left parent="" offset="5" />
+          <right offset="-5" />
+        </anchored>
+      </sheetframe>
+      <sheetframetitle name="party_list_frame_title">
+        <anchored to="party_list_frame" />
+        <static textres="journey_party_list_frame_title" />
+      </sheetframetitle>
+
+      <!-- Roles frame -->
+      <sheetframe name="party_roles_frame">
+        <bounds>5,-300,-5,300</bounds>
+        <!-- <anchored to="party_list_frame" height="300">
+          <top anchor="bottom" />
+          <left />
+          <right parent="rightanchor" offset="-5" />
+          <bottom parent="" />
+        </anchored> -->
+      </sheetframe>
+      <sheetframetitle name="party_roles_frame_title">
+        <anchored to="party_roles_frame" />
+        <static textres="journey_party_roles_frame_title" />
+      </sheetframetitle>
+
+      <party_guide_role name="guide_role">
+        <anchored to="party_roles_frame" position="insidetopleft" height="50">
+          <left offset="5" />
+          <top offset="10" />
+          <right to="rightanchor" offset="-150" />
+        </anchored>
+        <!-- <parameters>
+          <namelabel>journey_party_roles_guide_label</namelabel>
+          <linkdescfield>guide</linkdescfield>
+        </parameters> -->
+      </party_guide_role>
+      <!--
+      <linkfield name="guide_link">
+        <anchored to="party_roles_frame" position="right" offset="-30,-10" width="20">
+        </anchored>
+        <description field="guide" />
+        <closetoggle />
+        <invisible />
+        <script>
+						function onInit()
+							onValueChanged();
+						end
+						function onValueChanged()
+							if isEmpty() then
+								setVisible(false);
+							else
+								setVisible(true);
+							end
+						end
+        </script>
+      </linkfield>
+      <string_labeled name="guide_role">
+        <anchored to="party_roles_frame" position="insidetopleft" height="20">
+          <left offset="15" />
+          <top offset="30" />
+          <right to="guide_link" offset="-5" />
+        </anchored>
+        <labelres>journey_party_roles_guide_label</labelres>
+        <script>
+            function onDrop(x, y, draginfo)
+local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode());
+    if bReadOnly then return; end
+              RoleManager.handleAssignPartyRole("guide", draginfo)
+            end
+        </script>
+      </string_labeled>
+      -->
+
+      <!--
+      <string_labeled name="scout_role">
+        <anchored to="guide_role" height="20">
+          <left />
+          <top anchor="bottom" offset="10" />
+          <right parent="party_roles_frame" offset="-15" />
+        </anchored>
+        <labelres>journey_party_roles_scout_lead_label</labelres>
+      </string_labeled>
+      <string_labeled name="scout1_role">
+        <anchored to="scout_role" height="20">
+          <left />
+          <top anchor="bottom" offset="10" />
+          <right parent="party_roles_frame" offset="-15" />
+        </anchored>
+        <labelres>journey_party_roles_scout1_label</labelres>
+      </string_labeled>
+      <string_labeled name="scout2_role">
+        <anchored to="scout1_role" height="20">
+          <left />
+          <top anchor="bottom" offset="10" />
+          <right parent="party_roles_frame" offset="-15" />
+        </anchored>
+        <labelres>journey_party_roles_scout2_label</labelres>
+      </string_labeled>
+      <string_labeled name="hunter_role">
+        <anchored to="scout2_role" height="20">
+          <left />
+          <top anchor="bottom" offset="10" />
+          <right parent="party_roles_frame" offset="-15" />
+        </anchored>
+        <labelres>journey_party_roles_hunter_lead_label</labelres>
+      </string_labeled>
+      <string_labeled name="hunter1_role">
+        <anchored to="hunter_role" height="20">
+          <left />
+          <top anchor="bottom" offset="10" />
+          <right parent="party_roles_frame" offset="-15" />
+        </anchored>
+        <labelres>journey_party_roles_hunter1_label</labelres>
+      </string_labeled>
+      <string_labeled name="hunter2_role">
+        <anchored to="hunter1_role" height="20">
+          <left />
+          <top anchor="bottom" offset="10" />
+          <right parent="party_roles_frame" offset="-15" />
+        </anchored>
+        <labelres>journey_party_roles_hunter2_label</labelres>
+      </string_labeled>
+      <string_labeled name="lookout_role">
+        <anchored to="hunter2_role" height="20">
+          <left />
+          <top anchor="bottom" offset="10" />
+          <right parent="party_roles_frame" offset="-15" />
+        </anchored>
+        <labelres>journey_party_roles_lookout_lead_label</labelres>
+      </string_labeled>
+      <string_labeled name="lookout1_role">
+        <anchored to="lookout_role" height="20">
+          <left />
+          <top anchor="bottom" offset="10" />
+          <right parent="party_roles_frame" offset="-15" />
+        </anchored>
+        <labelres>journey_party_roles_lookout1_label</labelres>
+      </string_labeled>
+      <string_labeled name="lookout2_role">
+        <anchored to="lookout1_role" height="20">
+          <left />
+          <top anchor="bottom" offset="10" />
+          <right parent="party_roles_frame" offset="-15" />
+        </anchored>
+        <labelres>journey_party_roles_lookout2_label</labelres>
+      </string_labeled>
+-->
+
+      <!-- <frame_ref_content />
+      <sub_ref_content name="content">
+        <class>ref_journey_party</class>
+      </sub_ref_content>
+      <scrollbar_ref_content offset="-20" /> -->
+    </sheetdata>
+  </windowclass>
+</root>

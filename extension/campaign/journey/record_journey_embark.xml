@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!--
+  Please see the license.html file included with this distribution for
+  attribution and copyright information.
+-->
+
+<root>
+  <windowclass name="journey_embark">
+    <sheetdata>
+      <genericcontrol name="rightanchor">
+        <anchored height="0" width="0">
+          <top />
+          <right />
+        </anchored>
+      </genericcontrol>
+
+      <!-- UI elements:
+             (path section)
+             - table with hexes
+               - hex identifier
+               - base peril rating
+               - adjustments
+               - notes
+
+             (roll section)
+             - guide's:
+               ...embarkation roll
+               ...(game system skill) adjustment (bonus/modifier/etc.)
+               ...(game system attribute/characteristic) modifier
+             - highest peril rating
+             - result
+
+             (results section)
+             ???
+             (show result details for calculate result from table, or error?)
+
+             (buttons)
+             - add button to create "embarkation table" with appropriate columns for game system
+               (i.e., arrival modifiers, other modifiers, notes, etc.)
+        -->
+
+      <!-- Path frame -->
+      <sheetframe name="path_frame">
+        <anchored to="rightanchor" height="200">
+          <top parent="" />
+          <left parent="" offset="5" />
+          <right offset="-5" />
+        </anchored>
+      </sheetframe>
+      <sheetframetitle name="path_frame_title">
+        <anchored to="path_frame" />
+        <static textres="journey_embark_path_frame_title" />
+      </sheetframetitle>
+      <windowlist name="path_contents">
+        <anchored position="path_frame">
+          <left offset="10" />
+          <top offset="35" />
+          <right offset="-10" />
+          <bottom offset="-10" />
+        </anchored>
+        <script file="campaign/journey/scripts/embark_path.lua" />
+        <!-- <frame name="groupbox" offset="5,10,15,10" /> -->
+        <child></child>
+        <!-- <child>
+          <backcolor>1A40301E</backcolor>
+        </child> -->
+        <datasource>.embarkation.pathlist</datasource>
+        <class>journey_embark_path_item</class>
+      </windowlist>
+      <button_iedit name="path_iedit">
+        <anchored to="path_frame_title" position="insidetopright" offset="10,4" />
+        <script>
+					function onInit()
+            Debug.console("path edit init");
+					  onValueChanged();
+					end
+					function onValueChanged()
+            Debug.console("path edit value changed");
+						local bEditMode = (getValue() == 1);
+
+						-- window.path_iadd.setVisible(bEditMode);
+						window.path_contents.update(bEditMode);
+					end
+        </script>
+        <target>path_contents</target>
+      </button_iedit>
+      <button_iadd name="path_iadd">
+        <!-- <anchored to="path_frame_title" position="insidetopright" offset="10,4" /> -->
+        <anchored to="path_iedit" position="left" offset="4,4" />
+        <target>path_contents</target>
+      </button_iadd>
+
+      <!-- Roll frame -->
+      <sheetframe name="roll_frame">
+        <anchored to="path_frame" height="80" width="385">
+          <top anchor="bottom" />
+          <left />
+          <!-- <right parent="rightanchor" offset="-5" /> -->
+        </anchored>
+      </sheetframe>
+      <sheetframetitle name="roll_frame_title">
+        <anchored to="roll_frame" />
+        <static textres="journey_embark_roll_frame_title" />
+      </sheetframetitle>
+      <basicnumber name="initial_roll" source="embarkation.roll">
+        <anchored to="roll_frame" position="insidetopleft" width="40" height="20">
+          <left offset="20" />
+          <top offset="25" />
+        </anchored>
+        <tooltip textres="journey_embark_initial_roll_tooltip" />
+      </basicnumber>
+      <dieroller name="roll_embark">
+        <anchored to="initial_roll" offset="10,10" position="right">
+          <size width="18" height="14" />
+        </anchored>
+        <script>
+          -- function onClickDown() Debug.console("click down"); end
+          -- function onClickRelease() Debug.console("click release"); end
+          function onDoubleClick()
+            Debug.console("Roll embarkation...");
+            local customData = {"embarkation", getDatabaseNode()};
+            local dieType = "d12";
+            local node = window.getDatabaseNode();
+            Debug.console(node);
+            Comm.throwDice("embarkation", {dieType}, 0, node.getNodeName());
+          end
+        </script>
+        <tooltip textres="journey_embark_dieroller_tooltip" />
+      </dieroller>
+      <label>
+        <anchored to="initial_roll" position="below">
+          <left />
+          <right />
+        </anchored>
+        <center />
+        <static textres="journey_embark_initial_roll_label" />
+        <tooltip textres="journey_embark_initial_roll_tooltip" />
+        <script>
+          function onValueChanged()
+            Debug.console("initial roll changed");
+            local recordNode = JourneyManager.getRecordNode(self);
+            Debug.console(recordNode);
+            EmbarkManager.recalcEmbarkationResult(recordNode);
+          end
+        </script>
+      </label>
+      <label name="roll_plus_skill">
+        <anchored to="roll_embark" position="right" width="10">
+          <left anchor="right" offset="5" />
+          <top />
+          <bottom />
+        </anchored>
+        <center />
+        <static>+</static>
+      </label>
+      <basicnumber name="guide_skill_modifier" source="embarkation.guide_skill_modifier">
+        <anchored to="roll_plus_skill" position="right" width="40" height="20">
+          <left anchor="right" offset="10" />
+          <top parent="initial_roll" />
+          <bottom parent="initial_roll" />
+        </anchored>
+        <readonly />
+        <tooltip textres="journey_embark_guide_skill_modifier_tooltip" />
+      </basicnumber>
+      <label>
+        <anchored to="guide_skill_modifier" position="below">
+          <left />
+          <right />
+        </anchored>
+        <center />
+        <static textres="journey_embark_guide_skill_modifier_label" />
+        <tooltip textres="journey_embark_guide_skill_modifier_tooltip" />
+        <script>
+        function onInit()
+        -- get label from game system
+        end
+        </script>
+      </label>
+      <label name="skill_plus_attr">
+        <anchored to="guide_skill_modifier" position="right" width="10">
+          <left anchor="right" offset="10" />
+          <top />
+          <bottom />
+        </anchored>
+        <center />
+        <static>+</static>
+      </label>
+      <basicnumber name="guide_attr_modifier" source="embarkation.guide_attr_modifier">
+        <anchored to="skill_plus_attr" position="right" width="40" height="20">
+          <left anchor="right" offset="10" />
+          <top parent="initial_roll" />
+          <bottom parent="initial_roll" />
+        </anchored>
+        <readonly />
+        <tooltip textres="journey_embark_guide_attr_modifier_tooltip" />
+      </basicnumber>
+      <label>
+        <anchored to="guide_attr_modifier" position="below">
+          <left />
+          <right />
+        </anchored>
+        <center />
+        <static textres="journey_embark_guide_attr_modifier_label" />
+        <tooltip textres="journey_embark_guide_attr_modifier_tooltip" />
+        <script>
+        function onInit()
+        -- get label from game system
+        end
+        </script>
+      </label>
+      <label name="attr_minus_peril">
+        <anchored to="guide_attr_modifier" position="right" width="10">
+          <left anchor="right" offset="10" />
+          <top />
+          <bottom />
+        </anchored>
+        <center />
+        <static>+</static>
+      </label>
+      <basicnumber name="peril_rating" source="embarkation.highest_peril_rating">
+        <anchored to="attr_minus_peril" position="right" width="40" height="20">
+          <left anchor="right" offset="10" />
+          <top parent="initial_roll" />
+          <bottom parent="initial_roll" />
+        </anchored>
+        <readonly />
+        <tooltip textres="journey_embark_peril_rating_tooltip" />
+      </basicnumber>
+      <label>
+        <anchored to="peril_rating" position="below">
+          <left />
+          <right />
+        </anchored>
+        <center />
+        <static textres="journey_embark_peril_rating_label" />
+        <script>
+        function onInit()
+        -- get label from game system
+        end
+        </script>
+      </label>
+      <label name="equals_result">
+        <anchored to="peril_rating" position="right" width="10">
+          <left anchor="right" offset="10" />
+          <top />
+          <bottom />
+        </anchored>
+        <center />
+        <static>=</static>
+      </label>
+      <basicnumber name="result" source="embarkation.result">
+        <anchored to="equals_result" position="right" width="40" height="20">
+          <left anchor="right" offset="10" />
+          <top parent="initial_roll" />
+          <bottom parent="initial_roll" />
+        </anchored>
+        <readonly />
+        <tooltip textres="journey_embark_result_tooltip" />
+      </basicnumber>
+      <label>
+        <anchored to="result" position="below">
+          <left />
+          <right />
+        </anchored>
+        <center />
+        <static textres="journey_embark_result_label" />
+        <tooltip textres="journey_embark_result_tooltip" />
+      </label>
+
+      <!-- Results frame -->
+      <sheetframe name="results_frame">
+        <anchored to="roll_frame" height="200">
+          <top anchor="bottom" />
+          <left />
+          <right parent="rightanchor" offset="-5" />
+        </anchored>
+      </sheetframe>
+      <sheetframetitle name="results_frame_title">
+        <anchored to="results_frame" />
+        <static textres="journey_embark_results_frame_title" />
+      </sheetframetitle>
+
+    </sheetdata>
+  </windowclass>
+</root>

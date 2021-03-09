@@ -4,10 +4,10 @@ function onInit()
     aRecords = {
         ["srpg_journey"] = {
             -- bNoCategories = true,
-            -- bExport = true,
+            bExport = true,
             sEditMode = "gm",
             aDataMap = {"srpg_journey", "reference.srpg_journey"},
-            aDisplayIcon = {"button_journeys", "button_journeys_down"},
+            aDisplayIcon = {"button_journeys_up", "button_journeys_down"},
             sRecordDisplayClass = "srpg_journey"
         }
     };

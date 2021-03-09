@@ -7,10 +7,10 @@
 
 <root>
 
-<framedef name="journeypage">
+  <!-- <framedef name="journeypage">
     <bitmap file="graphics/frames/frame4.png" />
     <offset>30,30,35,30</offset>
     <insideoffset>0,0,10,10</insideoffset>
-</framedef>
+</framedef> -->
 
 </root>
