@@ -44,6 +44,39 @@
         <anchored to="party_list_frame" />
         <static textres="journey_party_list_frame_title" />
       </sheetframetitle>
+      <button_iedit name="members_iedit">
+        <anchored to="party_list_frame_title" position="insidetopright" offset="10,4" />
+        <script>
+					function onInit()
+            Debug.console("party list edit init");
+					  onValueChanged();
+					end
+					function onValueChanged()
+            Debug.console("party list edit value changed");
+						local bEditMode = (getValue() == 1);
+
+						-- window.path_iadd.setVisible(bEditMode);
+						window.member_contents.update(bEditMode);
+					end
+        </script>
+        <target>member_contents</target>
+      </button_iedit>
+      <windowlist name="member_contents">
+        <anchored position="party_list_frame">
+          <left offset="10" />
+          <top offset="35" />
+          <right offset="-10" />
+          <bottom offset="-10" />
+        </anchored>
+        <script file="campaign/journey/scripts/party_members.lua" />
+        <!-- <frame name="groupbox" offset="5,10,15,10" /> -->
+        <child></child>
+        <child>
+          <backcolor>1A40301E</backcolor>
+        </child>
+        <datasource>.party.members</datasource>
+        <class>journey_party_members_item</class>
+      </windowlist>
 
       <!-- Roles frame -->
       <sheetframe name="party_roles_frame">

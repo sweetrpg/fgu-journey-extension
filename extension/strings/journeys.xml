@@ -66,6 +66,7 @@
 
   <!-- Party -->
   <string name="journey_party_list_frame_title">Members</string>
+  <string name="journey_party_member_name_label">Name</string>
   <string name="journey_party_roles_frame_title">Roles</string>
   <string name="journey_party_roles_guide_label">Guide</string>
   <string name="journey_party_roles_scout_lead_label">Lead Scout</string>
@@ -99,8 +100,8 @@
     <string name="ref_label_investigator">Investigator</string> -->
 
 
-    <!-- Campaign -->
-    <!-- <string name="library_recordtype_label_mc_investigator">Investigator</string>
+  <!-- Campaign -->
+  <!-- <string name="library_recordtype_label_mc_investigator">Investigator</string>
     <string name="sidebar_tooltip_mc_investigator">Investigator</string>
     <string name="library_recordtype_label_mc_investigator">Investigator</string> -->
 
