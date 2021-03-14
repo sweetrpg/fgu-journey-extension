@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!--
+  Please see the license.html file included with this distribution for
+  attribution and copyright information.
+-->
+
+<root>
+
+    <windowclass name="journey_arrival_contrib_item">
+        <margins control="0,0,0,2" />
+        <script>
+        </script>
+        <sheetdata>
+            <genericcontrol name="rightanchor">
+                <anchored position="insidetopright" offset="0,2" height="0" width="0" />
+            </genericcontrol>
+        </sheetdata>
+    </windowclass>
+
+</root>

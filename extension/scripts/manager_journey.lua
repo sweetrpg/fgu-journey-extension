@@ -3,11 +3,18 @@ function onInit()
     Debug.console("journey manager init");
     Debug.console("root");
     Debug.console(DB.getRoot());
+    Debug.console("frames")
+    Debug.console(Interface.getFrames());
+    Debug.console("icons")
+    Debug.console(Interface.getIcons());
+    Debug.console("fonts")
+    Debug.console(Interface.getFonts());
     --
 end
 
 function getRecordNode(node)
     -- Debug.console(node);
+    if not node then return nil; end
     if not node.getParent() then return nil; end
     --
     local id = nil

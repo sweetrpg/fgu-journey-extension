@@ -14,13 +14,13 @@
 				getDatabaseNode().onDelete = onDelete;
 			end
 			function onDelete(node)
-                Debug.console("on delete embark path item");
+                -- Debug.console("on delete embark path item");
                 -- Debug.console(window);
-                Debug.console(node);
+                -- Debug.console(node);
                 -- local itemNode = JourneyManager.getItemNode(getDatabaseNode());
                 -- Debug.console(itemNode);
                 local listNode = node.getParent();
-                Debug.console(listNode);
+                -- Debug.console(listNode);
 				EmbarkationManager.recalcPerilRating(listNode);
 			end
             function update(bEditMode)
@@ -69,9 +69,9 @@
                 <tooltip textres="journey_embark_path_item_peril_tooltip" />
                 <script>
                   function onValueChanged()
-                    Debug.console("base peril rating changed");
+                    -- Debug.console("base peril rating changed");
                     local listNode = getDatabaseNode().getParent().getParent();
-                    Debug.console(listNode);
+                    -- Debug.console(listNode);
                     EmbarkationManager.recalcPerilRating(listNode);
                   end
                 </script>
@@ -87,9 +87,9 @@
                 <tooltip textres="journey_embark_path_item_adj_tooltip" />
                 <script>
                   function onValueChanged()
-                    Debug.console("adjustment value changed");
+                    -- Debug.console("adjustment value changed");
                     local listNode = getDatabaseNode().getParent().getParent();
-                    Debug.console(listNode);
+                    -- Debug.console(listNode);
                     EmbarkationManager.recalcPerilRating(listNode);
                   end
                 </script>

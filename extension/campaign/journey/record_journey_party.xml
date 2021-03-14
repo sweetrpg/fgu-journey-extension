@@ -70,10 +70,10 @@
         </anchored>
         <script file="campaign/journey/scripts/party_members.lua" />
         <!-- <frame name="groupbox" offset="5,10,15,10" /> -->
-        <child></child>
         <child>
           <backcolor>1A40301E</backcolor>
         </child>
+        <child></child>
         <datasource>.party.members</datasource>
         <class>journey_party_members_item</class>
       </windowlist>
@@ -93,20 +93,38 @@
         <static textres="journey_party_roles_frame_title" />
       </sheetframetitle>
 
-      <party_guide_role name="guide_role">
+      <!-- Guide -->
+      <genericcontrol name="guide_anchor">
+        <anchored to="party_roles_frame" height="20">
+          <top offset="25" />
+          <left offset="15" />
+          <right offset="-15" />
+        </anchored>
+      </genericcontrol>
+      <!-- <party_guide_role name="guide_role">
         <anchored to="party_roles_frame" position="insidetopleft" height="50">
           <left offset="5" />
           <top offset="10" />
           <right to="rightanchor" offset="-150" />
         </anchored>
-        <!-- <parameters>
+        <parameters>
           <namelabel>journey_party_roles_guide_label</namelabel>
           <linkdescfield>guide</linkdescfield>
-        </parameters> -->
-      </party_guide_role>
-      <!--
-      <linkfield name="guide_link">
-        <anchored to="party_roles_frame" position="right" offset="-30,-10" width="20">
+        </parameters>
+      </party_guide_role> -->
+      <label name="guide_role_label">
+        <anchored to="guide_anchor" width="50" height="20">
+          <left />
+          <top offset="3" />
+        </anchored>
+        <font>sheetlabel</font>
+        <static textres="journey_party_roles_guide_label" />
+      </label>
+      <linkfield name="guide_link" source="party.roles.guide">
+        <anchored to="guide_role_label" width="20" height="20">
+          <top />
+          <left anchor="right" offset="10" />
+          <!-- <right parent="idelete" anchor="left" offset="-5" /> -->
         </anchored>
         <description field="guide" />
         <closetoggle />
@@ -116,30 +134,104 @@
 							onValueChanged();
 						end
 						function onValueChanged()
+              setVisible(true);
 							if isEmpty() then
-								setVisible(false);
+								-- setVisible(false);
+                window.guide_role.setValue("&lt;Not set&gt;");
 							else
-								setVisible(true);
+								-- setVisible(true);
+                local _, nodeId = getValue();
+                local c = DB.findNode(nodeId);
+                local nameNode = c.getChild("name");
+                if nameNode then
+                    window.guide_role.setValue(nameNode.getValue());
+                end
+                -- set value according to game system
+                local value = GameSystemManager.getGameSystemValue(c, "guide_attribute");
+                Debug.console(value);
+                window.guide_attr.setValue(value);
+                -- set value according to game system
+                local value = GameSystemManager.getGameSystemValue(c, "guide_skill");
+                Debug.console(value);
+                 window.guide_skill.setValue(value);
 							end
 						end
         </script>
       </linkfield>
-      <string_labeled name="guide_role">
-        <anchored to="party_roles_frame" position="insidetopleft" height="20">
-          <left offset="15" />
-          <top offset="30" />
-          <right to="guide_link" offset="-5" />
+      <buttoncontrol name="guide_remove">
+        <icon normal="button_close" pressed="button_close" />
+        <anchored to="guide_anchor" width="20" height="20">
+          <top offset="0" />
+          <right offset="-2" />
         </anchored>
-        <labelres>journey_party_roles_guide_label</labelres>
+        <script>
+        function onClickRelease()
+          Debug.console("close clicked")
+          local dbNode = window.getDatabaseNode();
+          local recordNode = JourneyManager.getRecordNode(dbNode);
+          Debug.console(recordNode);
+          RoleManager.removePartyRole(recordNode, "guide")
+          window.guide_attr.setValue("");
+          window.guide_skill.setValue("");
+        end
+        </script>
+      </buttoncontrol>
+      <!-- <button_idelete name="guide_delete">
+        <anchored to="guide_anchor" width="20" height="20">
+          <top offset="2" />
+          <right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
+        </anchored>
+      </button_idelete> -->
+      <basicstring name="guide_skill">
+        <anchored to="guide_remove" width="40" height="20">
+          <top />
+          <right anchor="left" offset="-5" />
+        </anchored>
+        <script>
+          function onInit()
+            -- set label according to game system
+            local s = GameSystemManager.getGameSystemText("party_roles", "guide_attr", "tooltip");
+            Debug.console(label);
+            -- Interface.setString("journey_party_roles_guide_skill_label", label);
+            setTooltipText(s)
+          end
+        </script>
+        <readonly />
+        <!-- <labelres>journey_party_roles_guide_skill_label</labelres> -->
+        <tooltip>journey_party_roles_guide_skill_tooltip</tooltip>
+      </basicstring>
+      <string_labeled name="guide_attr">
+        <anchored to="guide_skill" width="40" height="20">
+          <top />
+          <right anchor="left" offset="-5" />
+        </anchored>
+        <script>
+          function onInit()
+          end
+        </script>
+        <readonly />
+        <labelres>journey_party_roles_guide_attr_label</labelres>
+        <tooltip>journey_party_roles_guide_attr_tooltip</tooltip>
+      </string_labeled>
+      <string_labeled name="guide_role">
+        <anchored to="guide_anchor" height="20">
+          <left parent="guide_link" anchor="right" offset="5" />
+          <top />
+          <right parent="guide_attr" anchor="left" offset="-5" />
+        </anchored>
         <script>
             function onDrop(x, y, draginfo)
-local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode());
-    if bReadOnly then return; end
-              RoleManager.handleAssignPartyRole("guide", draginfo)
+              -- local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode());
+              Debug.console(draginfo);
+              -- if bReadOnly then return; end
+              local recordNode = JourneyManager.getRecordNode(getDatabaseNode());
+              Debug.console(recordNode);
+              RoleManager.handleAssignPartyRole(recordNode, "guide", draginfo)
             end
         </script>
+        <readonly />
+        <labelres>journey_party_roles_guide_name_label</labelres>
       </string_labeled>
-      -->
 
       <!--
       <string_labeled name="scout_role">

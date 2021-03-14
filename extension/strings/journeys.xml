@@ -60,8 +60,23 @@
   <!-- Events -->
 
   <!-- Arrival -->
-  <string name="journey_arrival_summary_frame_title">Arrival</string>
+  <string name="journey_arrival_summary_frame_title">Roll</string>
+  <string name="journey_arrival_initial_roll_label">Arrival</string>
+  <string name="journey_arrival_initial_roll_tooltip">Arrival roll</string>
+  <string name="journey_arrival_dieroller_tooltip">Double-click to make an arrival roll</string>
+  <string name="journey_arrival_terrain_modifier_label">Terrain</string>
+  <string name="journey_arrival_terrain_modifier_tooltip">Terrain modifiers</string>
+  <string name="journey_arrival_modifiers_label">Mod.</string>
+  <string name="journey_arrival_modifiers_tooltip">Arrival modifiers</string>
+  <string name="journey_arrival_result_label">Result</string>
+  <string name="journey_arrival_result_tooltip">Arrival result</string>
   <string name="journey_arrival_travel_time_frame_title">Time Taken</string>
+  <string name="journey_arrival_travel_speed_label">Speed</string>
+  <string name="journey_arrival_travel_speed_tooltip">Travel speed</string>
+  <string name="journey_arrival_travel_hex_count_label">Hexes</string>
+  <string name="journey_arrival_travel_hex_count_tooltip">Hexes traveled</string>
+  <string name="journey_arrival_travel_result_label">Time</string>
+  <string name="journey_arrival_travel_result_tooltip">Time taken (in days)</string>
   <string name="journey_arrival_contrib_frame_title">Contributions</string>
 
   <!-- Party -->
@@ -69,6 +84,11 @@
   <string name="journey_party_member_name_label">Name</string>
   <string name="journey_party_roles_frame_title">Roles</string>
   <string name="journey_party_roles_guide_label">Guide</string>
+  <string name="journey_party_roles_guide_name_label">Name</string>
+  <string name="journey_party_roles_guide_attr_label">Attr.</string>
+  <string name="journey_party_roles_guide_attr_tooltip">Attribute</string>
+  <string name="journey_party_roles_guide_skill_label">Skill</string>
+  <string name="journey_party_roles_guide_skill_tooltip">Skill Modifier</string>
   <string name="journey_party_roles_scout_lead_label">Lead Scout</string>
   <string name="journey_party_roles_scout1_label">Scout</string>
   <string name="journey_party_roles_scout2_label">Scout</string>

@@ -2,7 +2,19 @@
 -- Please see the license.html file included with this distribution for
 -- attribution and copyright information.
 --
-function onInit() update(); end
+local thisRecordNode = nil;
+
+function onInit()
+    Debug.console("journey main init")
+    thisRecordNode = getDatabaseNode();
+    Debug.console(thisRecordNode);
+    update();
+end
+
+function getRecordNode()
+    Debug.console("get this window record node")
+    return thisRecordNode;
+end
 
 function VisDataCleared() update(); end
 
@@ -19,4 +31,5 @@ end
 function update()
     local nodeRecord = getDatabaseNode();
     local bReadOnly = WindowManager.getReadOnlyState(nodeRecord);
+    -- TODO
 end

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<root>
+
+    <icon name="button_remove_normal" file="graphics/journey/buttons/remove_normal.png" />
+    <icon name="button_remove_pressed" file="graphics/journey/buttons/remove_pressed.png" />
+    <icon name="button_remove_hover" file="graphics/journey/buttons/remove_hover.png" />
+
+</root>

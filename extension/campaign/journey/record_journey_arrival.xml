@@ -35,29 +35,275 @@
       <!-- Summary frame -->
       <sheetframe name="arrival_summary_frame">
         <!-- <bounds>5,10,100,60</bounds> -->
-        <anchored height="75">
+        <anchored width="315" height="75">
           <top parent="rightanchor" anchor="bottom" />
           <left parent="" offset="5" />
-          <right parent="rightanchor" offset="-5" />
+          <!-- <right parent="rightanchor" offset="-5" /> -->
         </anchored>
       </sheetframe>
       <sheetframetitle name="arrival_summary_frame_title">
         <anchored to="arrival_summary_frame" />
         <static textres="journey_arrival_summary_frame_title" />
       </sheetframetitle>
+      <basicnumber name="initial_roll" source="arrival.roll">
+        <anchored to="arrival_summary_frame" position="insidetopleft" width="40" height="20">
+          <left offset="20" />
+          <top offset="25" />
+        </anchored>
+        <tooltip textres="journey_arrival_initial_roll_tooltip" />
+      </basicnumber>
+      <dieroller name="roll_arrival">
+        <anchored to="initial_roll" offset="10,10" position="right">
+          <size width="18" height="14" />
+        </anchored>
+        <script>
+          -- function onClickDown() Debug.console("click down"); end
+          -- function onClickRelease() Debug.console("click release"); end
+          function onDoubleClick()
+            Debug.console("Roll arrival...");
+            local customData = {"arrival", getDatabaseNode()};
+            local dieType = "d12";
+            local node = window.getDatabaseNode();
+            Debug.console(node);
+            Comm.throwDice("arrival", {dieType}, 0, node.getNodeName());
+          end
+        </script>
+        <tooltip textres="journey_arrival_dieroller_tooltip" />
+      </dieroller>
+      <label>
+        <anchored to="initial_roll" position="below">
+          <left />
+          <right />
+        </anchored>
+        <center />
+        <static textres="journey_arrival_initial_roll_label" />
+        <tooltip textres="journey_arrival_initial_roll_tooltip" />
+        <script>
+          function onValueChanged()
+            Debug.console("initial roll changed");
+            local recordNode = JourneyManager.getRecordNode(self);
+            Debug.console(recordNode);
+            ArrivalManager.recalcArrivalResult(recordNode);
+          end
+        </script>
+      </label>
+      <label name="roll_plus_terrain">
+        <anchored to="roll_arrival" position="right" width="10">
+          <left anchor="right" offset="5" />
+          <top />
+          <bottom />
+        </anchored>
+        <center />
+        <static>+</static>
+      </label>
+      <basicnumber name="terrain_modifier" source="arrival.terrain_modifier">
+        <anchored to="roll_plus_terrain" position="right" width="40" height="20">
+          <left anchor="right" offset="10" />
+          <top parent="initial_roll" />
+          <bottom parent="initial_roll" />
+        </anchored>
+        <readonly />
+        <tooltip textres="journey_arrival_terrain_modifier_tooltip" />
+      </basicnumber>
+      <label>
+        <anchored to="terrain_modifier" position="below">
+          <left />
+          <right />
+        </anchored>
+        <center />
+        <static textres="journey_arrival_terrain_modifier_label" />
+        <tooltip textres="journey_arrival_terrain_modifier_tooltip" />
+        <script>
+        function onInit()
+        -- get label from game system
+        end
+        </script>
+      </label>
+      <label name="terrain_plus_arrival">
+        <anchored to="terrain_modifier" position="right" width="10">
+          <left anchor="right" offset="10" />
+          <top />
+          <bottom />
+        </anchored>
+        <center />
+        <static>+</static>
+      </label>
+      <basicnumber name="modifiers" source="arrival.modifiers">
+        <anchored to="terrain_plus_arrival" position="right" width="40" height="20">
+          <left anchor="right" offset="10" />
+          <top parent="initial_roll" />
+          <bottom parent="initial_roll" />
+        </anchored>
+        <readonly />
+        <tooltip textres="journey_arrival_modifiers_tooltip" />
+      </basicnumber>
+      <label>
+        <anchored to="modifiers" position="below">
+          <left />
+          <right />
+        </anchored>
+        <center />
+        <static textres="journey_arrival_modifiers_label" />
+        <tooltip textres="journey_arrival_modifiers_tooltip" />
+        <script>
+        function onInit()
+        -- get label from game system
+        end
+        </script>
+      </label>
+      <label name="equals_result">
+        <anchored to="modifiers" position="right" width="10">
+          <left anchor="right" offset="10" />
+          <top />
+          <bottom />
+        </anchored>
+        <center />
+        <static>=</static>
+      </label>
+      <basicnumber name="result" source="arrival.result">
+        <anchored to="equals_result" position="right" width="40" height="20">
+          <left anchor="right" offset="10" />
+          <top parent="initial_roll" />
+          <bottom parent="initial_roll" />
+        </anchored>
+        <readonly />
+        <tooltip textres="journey_arrival_result_tooltip" />
+      </basicnumber>
+      <label>
+        <anchored to="result" position="below">
+          <left />
+          <right />
+        </anchored>
+        <center />
+        <static textres="journey_arrival_result_label" />
+        <tooltip textres="journey_arrival_result_tooltip" />
+      </label>
 
       <!-- Time frame -->
       <sheetframe name="travel_time_frame">
-        <anchored width="110" height="75">
+        <anchored width="290" height="75">
           <top parent="arrival_summary_frame" anchor="bottom" />
           <left offset="5" />
-          <right parent="rightanchor" offset="-5" />
+          <!-- <right parent="rightanchor" offset="-5" /> -->
         </anchored>
       </sheetframe>
       <sheetframetitle name="travel_time_frame_title">
         <anchored to="travel_time_frame" />
         <static textres="journey_arrival_travel_time_frame_title" />
       </sheetframetitle>
+      <basicnumber name="travel_speed" source="arrival.travel_speed">
+        <anchored to="travel_time_frame" position="insidetopleft" width="40" height="20">
+          <left offset="20" />
+          <top offset="25" />
+        </anchored>
+        <tooltip textres="journey_arrival_travel_speed_label" />
+      </basicnumber>
+      <label>
+        <anchored to="travel_speed" position="below">
+          <left />
+          <right />
+        </anchored>
+        <center />
+        <static textres="journey_arrival_travel_speed_label" />
+        <tooltip textres="journey_arrival_travel_speed_tooltip" />
+        <script>
+          function onValueChanged()
+            Debug.console("travel speed changed");
+            local recordNode = JourneyManager.getRecordNode(self);
+            Debug.console(recordNode);
+            ArrivalManager.recalcTravelResult(recordNode);
+          end
+        </script>
+      </label>
+      <label name="speed_plus_terrain">
+        <anchored to="travel_speed" position="right" width="10">
+          <left anchor="right" offset="10" />
+          <top />
+          <bottom />
+        </anchored>
+        <center />
+        <static>+</static>
+      </label>
+      <basicnumber name="travel_terrain_modifier" source="arrival.terrain_modifier">
+        <anchored to="speed_plus_terrain" position="right" width="40" height="20">
+          <left anchor="right" offset="10" />
+          <top parent="travel_speed" />
+          <bottom parent="travel_speed" />
+        </anchored>
+        <readonly />
+        <tooltip textres="journey_arrival_terrain_modifier_tooltip" />
+      </basicnumber>
+      <label>
+        <anchored to="travel_terrain_modifier" position="below">
+          <left />
+          <right />
+        </anchored>
+        <center />
+        <static textres="journey_arrival_terrain_modifier_label" />
+        <tooltip textres="journey_arrival_terrain_modifier_tooltip" />
+        <script>
+        function onInit()
+        end
+        </script>
+      </label>
+      <label name="terrain_plus_hexes">
+        <anchored to="travel_terrain_modifier" position="right" width="10">
+          <left anchor="right" offset="10" />
+          <top />
+          <bottom />
+        </anchored>
+        <center />
+        <static>+</static>
+      </label>
+      <basicnumber name="hex_count" source="arrival.modifiers">
+        <anchored to="terrain_plus_hexes" position="right" width="40" height="20">
+          <left anchor="right" offset="10" />
+          <top parent="travel_speed" />
+          <bottom parent="travel_speed" />
+        </anchored>
+        <readonly />
+        <tooltip textres="journey_arrival_travel_hex_count_tooltip" />
+      </basicnumber>
+      <label>
+        <anchored to="hex_count" position="below">
+          <left />
+          <right />
+        </anchored>
+        <center />
+        <static textres="journey_arrival_travel_hex_count_label" />
+        <tooltip textres="journey_arrival_travel_hex_count_tooltip" />
+        <script>
+        function onInit()
+        end
+        </script>
+      </label>
+      <label name="travel_equals_result">
+        <anchored to="hex_count" position="right" width="10">
+          <left anchor="right" offset="10" />
+          <top />
+          <bottom />
+        </anchored>
+        <center />
+        <static>=</static>
+      </label>
+      <basicnumber name="travel_result" source="arrival.result">
+        <anchored to="travel_equals_result" position="right" width="40" height="20">
+          <left anchor="right" offset="10" />
+          <top parent="travel_speed" />
+          <bottom parent="travel_speed" />
+        </anchored>
+        <readonly />
+        <tooltip textres="journey_arrival_travel_result_tooltip" />
+      </basicnumber>
+      <label>
+        <anchored to="travel_result" position="below">
+          <left />
+          <right />
+        </anchored>
+        <center />
+        <static textres="journey_arrival_travel_result_label" />
+        <tooltip textres="journey_arrival_travel_result_tooltip" />
+      </label>
 
       <!-- Table frame -->
       <sheetframe name="arrival_contrib_frame">
@@ -72,6 +318,22 @@
         <anchored to="arrival_contrib_frame" />
         <static textres="journey_arrival_contrib_frame_title" />
       </sheetframetitle>
+      <windowlist name="arrival_contrib_contents">
+        <anchored position="arrival_contrib_frame">
+          <left offset="10" />
+          <top offset="35" />
+          <right offset="-10" />
+          <bottom offset="-10" />
+        </anchored>
+        <script file="campaign/journey/scripts/arrival_contrib.lua" />
+        <!-- <frame name="groupbox" offset="5,10,15,10" /> -->
+        <child></child>
+        <child>
+          <backcolor>1A40301E</backcolor>
+        </child>
+        <datasource>.arrival.contributions</datasource>
+        <class>journey_arrival_contrib_item</class>
+      </windowlist>
 
     </sheetdata>
   </windowclass>
